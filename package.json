@@ -1,0 +1,30 @@
+{
+  "name": "react-validator",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": ">= 16.14"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf ./dist && npx tsc",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Cristián Santana",
+    "email": "hola@cristiansantana.cl"
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+  ],
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6"
+  }
+}
