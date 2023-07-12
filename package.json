@@ -1,5 +1,5 @@
 {
-  "name": "react-validator",
+  "name": "@cristiansantana/react-validator",
   "version": "1.0.0",
   "description": "",
   "engines": {
@@ -22,6 +22,9 @@
   },
   "keywords": [
   ],
+  "peerDependencies": {
+    "react": "16.x || 17.x || 18.x"
+  },
   "devDependencies": {
     "@types/node": "^20.4.1",
     "rimraf": "^5.0.1",
