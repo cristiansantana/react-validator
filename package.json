@@ -20,13 +20,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "peerDependencies": {
     "react": "16.x || 17.x || 18.x"
   },
   "devDependencies": {
     "@types/node": "^20.4.1",
+    "@types/react": "^18.2.14",
     "rimraf": "^5.0.1",
     "typescript": "^5.1.6"
   }
