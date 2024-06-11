@@ -2,14 +2,24 @@
   "name": "@cristiansantana/react-validator",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": ">= 16.14"
-  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/hooks/index.js",
+      "types": "./dist/hooks/index.d.ts"
+    }
+  },
+  "type": "module",
   "scripts": {
-    "build": "rimraf ./dist && npx tsc",
-    "prepublish": "npm run build",
+    "build": "tsup",
+    "prepublishOnlye": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
@@ -21,13 +31,23 @@
     "access": "public"
   },
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cristiansantana/react-validator.git"
+  },
   "peerDependencies": {
-    "react": "16.x || 17.x || 18.x"
+    "@types/react": "^18",
+    "joi": "^17.12",
+    "react": "^18"
   },
   "devDependencies": {
-    "@types/node": "^20.4.1",
-    "@types/react": "^18.2.14",
-    "rimraf": "^5.0.1",
-    "typescript": "^5.1.6"
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "joi": "^17.12",
+    "prettier": "^3.3.0",
+    "react": "^18",
+    "rimraf": "^5.0.7",
+    "tsup": "^8.1.0",
+    "typescript": "^5.1.3"
   }
 }

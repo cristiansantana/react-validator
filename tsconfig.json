@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "esModuleInterop": true,
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,
     "outDir": "dist",
-    "stripInternal": true
-  }
+    "jsx": "react-jsx",
+    "lib": ["ES5", "ES6", "dom"],
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
 }
