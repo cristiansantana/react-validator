@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "module": "ESNext",
+    "module": "ES2015",
+    "sourceMap": true,
     "moduleResolution": "Bundler",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -9,7 +10,6 @@
     "declaration": true,
     "outDir": "dist",
     "jsx": "react-jsx",
-    "lib": ["ES5", "ES6", "dom"],
   },
   "include": [
     "src/**/*.ts",
