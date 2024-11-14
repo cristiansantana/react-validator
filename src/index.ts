@@ -37,7 +37,6 @@ class Validator<T extends Joi.PartialSchemaMap> {
             return value;
         } catch (error) {
             if (isJoiError(error)) {
-                console.log("D");
                 this.errors = mapValidatorErrors(error.details);
                 return false;
             } else {
