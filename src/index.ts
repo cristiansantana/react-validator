@@ -1,18 +1,18 @@
-import Joi from "joi";
+import Joi, { ValidationError } from "joi";
 import mapValidatorErrors from "./mapValidatorErrors";
 import messages from "./locales";
 import { ValidatorErrorItem, ValidatorLanguage } from "./validatorTypes";
 
 class Validator<T extends Joi.PartialSchemaMap> {
-    private schemaObject: Joi.ObjectSchema;
+    private schemaObject: Joi.ObjectSchema<T>;
     private options: Joi.ValidationOptions;
 
     errors: ValidatorErrorItem[] = [];
 
-    constructor(private schema: T, language: ValidatorLanguage = "en") {
+    constructor(schema: T, language: ValidatorLanguage = "en") {
         this.schemaObject = Joi.object(schema);
         this.options = {
-            abortEarly: true,
+            abortEarly: false,
             messages,
             errors: {
                 language,
@@ -20,23 +20,24 @@ class Validator<T extends Joi.PartialSchemaMap> {
         };
     }
 
-    validate = <D extends {}>(data: D) => {
+    validate = (data: any) => {
         const result = this.schemaObject.validate(data, this.options);
 
         if (result.error) {
             this.errors = mapValidatorErrors(result.error.details);
             return false;
         } else {
-            return result.value as D;
+            return result.value;
         }
     };
 
-    validateAsync = async <D extends {}>(data: D) => {
+    validateAsync = async (data: any) => {
         try {
-            const value = await this.schemaObject.validateAsync(data);
-            return value as D;
+            const value = await this.schemaObject.validateAsync(data, this.options);
+            return value;
         } catch (error) {
-            if (error instanceof Joi.ValidationError) {
+            if (isJoiError(error)) {
+                console.log("D");
                 this.errors = mapValidatorErrors(error.details);
                 return false;
             } else {
@@ -45,6 +46,10 @@ class Validator<T extends Joi.PartialSchemaMap> {
         }
     };
 }
+
+const isJoiError = (error: any): error is ValidationError => {
+    return error.name === "ValidationError";
+};
 
 export {
     Validator,
