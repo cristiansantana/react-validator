@@ -4,7 +4,7 @@ import messages from "./locales";
 import { ValidatorErrorItem, ValidatorLanguage } from "./validatorTypes";
 
 class Validator<T extends Joi.PartialSchemaMap> {
-    private schemaObject: Joi.ObjectSchema<T>;
+    private schemaObject: Joi.ObjectSchema;
     private options: Joi.ValidationOptions;
 
     errors: ValidatorErrorItem[] = [];
@@ -20,21 +20,21 @@ class Validator<T extends Joi.PartialSchemaMap> {
         };
     }
 
-    validate = (data: any) => {
+    validate = <D extends {}>(data: D) => {
         const result = this.schemaObject.validate(data, this.options);
 
         if (result.error) {
             this.errors = mapValidatorErrors(result.error.details);
             return false;
         } else {
-            return result.value;
+            return result.value as D;
         }
     };
 
-    validateAsync = async (data: any) => {
+    validateAsync = async <D extends {}>(data: D) => {
         try {
             const value = await this.schemaObject.validateAsync(data, this.options);
-            return value;
+            return value as D;
         } catch (error) {
             if (isJoiError(error)) {
                 this.errors = mapValidatorErrors(error.details);
