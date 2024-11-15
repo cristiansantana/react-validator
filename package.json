@@ -20,7 +20,7 @@
   "type": "module",
   "scripts": {
     "build": "tsup",
-    "prepublishOnlye": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
