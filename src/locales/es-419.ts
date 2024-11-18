@@ -5,6 +5,7 @@ const es = {
     "string.min": "Este campo debe tener al menos {#limit} caracteres de largo",
     "string.max": "Este campo no debe tener más de {#limit} caracteres de largo",
     "string.length": "Este campo debe tener exactamente {#limit} caracteres de largo",
+    "string.regex": "Esta campo tiene un formato incorrecto",
 };
 
 export default es;
